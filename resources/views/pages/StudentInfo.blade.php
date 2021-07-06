@@ -123,6 +123,8 @@
                                 </ul>
                             </div>
                         </li>
+
+
                         <li><a href="/admin-teachers">
                                 <center><i class="fa fa-map-marker"></i><br> Salles </center>
                             </a>
@@ -195,27 +197,28 @@
                                                 </div>
                                                 <div class="tab-inn">
                                                     <form>
-
                                                         <div class="ml-2 col-md-12">
                                                             <div class=" col-md-12" id="avatar2">
-                                                                <img src="{{ $eleve->img }}"
-                                                                    id="preview" class="img-thumbnail">
+                                                                <img src="{{ $params[0]->img }}" id="preview"
+                                                                    class="img-thumbnail">
                                                             </div>
-                                                                <div class="input-group my-3">
-                                                                    <div class="input-group-append">
-                                                                        <input type="file" name="img[]" class="file"
-                                                                            accept="image/*">
-                                                                        <div class="input-group my-3" style="display: flex;">
-                                                                            <div class="input-group-append">
-                                                                                <button type="button"
-                                                                                    class="browse btn btn-primary"><i
-                                                                                        class="fa fa-fw fa-upload"></i>Mettre à
-                                                                                    Jour</button>
-                                                                            </div>
+                                                            <div class="input-group my-3">
+                                                                <div class="input-group-append">
+                                                                    <input type="file" name="img[]" class="file"
+                                                                        accept="image/*">
+                                                                    <div class="input-group my-3"
+                                                                        style="display: flex;">
+                                                                        <div class="input-group-append">
+                                                                            <button type="button"
+                                                                                class="browse btn btn-primary"><i
+                                                                                    class="fa fa-fw fa-upload"></i>Mettre
+                                                                                à
+                                                                                Jour</button>
                                                                         </div>
-        
                                                                     </div>
+
                                                                 </div>
+                                                            </div>
 
                                                         </div>
 
@@ -223,42 +226,42 @@
                                                             <label class="">Prénom</label>
                                                             <div class="input-field col s12">
                                                                 <input type="text" class="validate"
-                                                                    value="{{ $eleve->prenom }}" required>
+                                                                    value="{{ $params[0]->prenom }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Nom</label>
                                                             <div class="input-field col s12">
                                                                 <input type="text" class="validate"
-                                                                    value="{{ $eleve->nom }}" required>
+                                                                    value="{{ $params[0]->nom }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Sexe</label>
                                                             <div class="input-field col s12">
                                                                 <input type="text" class="validate"
-                                                                    value="{{ $eleve->sexe }}" required>
+                                                                    value="{{ $params[0]->sexe }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Date de Naissance</label>
                                                             <div class="input-field col s12">
                                                                 <input type="date" class="validate"
-                                                                    value="{{ $eleve->date_naissance }}" required>
+                                                                    value="{{ $params[0]->date_naissance }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Lieu de Naissance</label>
                                                             <div class="input-field col s12">
                                                                 <input type="text" class="validate"
-                                                                    value="{{ $eleve->lieu_naissance }}" required>
+                                                                    value="{{ $params[0]->lieu_naissance }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Nationalité</label>
                                                             <div class="input-field col s12">
                                                                 <input type="text" class="validate"
-                                                                    value="{{ $eleve->nationalite }}" required>
+                                                                    value="{{ $params[0]->Nationalite }}" required>
                                                             </div>
                                                         </div>
 
@@ -273,6 +276,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6">
                                             <div class="box-inn-sp admin-form">
                                                 <div class="inn-title">
@@ -284,21 +288,21 @@
                                                             <label class="">Email</label>
                                                             <div class="input-field col s12">
                                                                 <input type="email" class="validate"
-                                                                    value="{{ $eleve->email }}" required>
+                                                                    value="{{ $params[0]->email }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Téléphone1</label>
                                                             <div class="input-field col s12">
                                                                 <input type="tel" class="validate"
-                                                                    value="{{ $eleve->phone1 }}" required>
+                                                                    value="{{ $params[0]->phone1 }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Téléphone2 (Option)</label>
                                                             <div class="input-field col s12">
                                                                 <input type="tel" class="validate"
-                                                                    value="{{ $eleve->phone2 }}" required>
+                                                                    value="{{ $params[0]->phone2 }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -312,7 +316,68 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-6 align-self-start">
+                                            <div class="box-inn-sp admin-form">
+                                                <div class="inn-title">
+                                                    <h4>Formation</h4>
+                                                </div>
+                                                <div class="tab-inn">
+                                                    <form>
+                                                        <div class="row">
+                                                            <label class="">Parcours Scolaire</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[0]->parcours_scolaire }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Filière</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[0]->filiere }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Spécialité</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[0]->specialite }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Niveau</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="integer" class="validate"
+                                                                    value="{{ $params[0]->niveau }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Classe</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="integer" class="validate"
+                                                                    value="{{ $params[0]->classe }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Sous Groupe</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="integer" class="validate"
+                                                                    value="{{ $params[0]->sous_groupe }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <i class="waves-effect waves-light btn-large waves-input-wrapper"
+                                                                    style=""><input type="submit"
+                                                                        class="waves-button-input"></i>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6  align-self-start">
                                             <div class="box-inn-sp admin-form">
                                                 <div class="inn-title">
                                                     <h4>Information Sur l'ancienne Ecole</h4>
@@ -320,61 +385,17 @@
                                                 <div class="tab-inn">
                                                     <form>
                                                         <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate" required>
-                                                                <label class="">First name</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate" required>
-                                                                <label class="">Last name</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="number" value="" class="validate" required>
-                                                                <label class="">Phone number</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="email" class="validate" value="" required>
-                                                                <label class="">Email is</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate">
-                                                                <label class="">City</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate">
-                                                                <label class="">Country</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="password" value="" class="validate">
-                                                                <label class="">Password</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="password" value="" class="validate">
-                                                                <label class="">Confirm Password</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
+                                                            <label class="">Nom Ecole</label>
                                                             <div class="input-field col s12">
-                                                                <input type="text" value="" class="validate">
-                                                                <label>Student id</label>
+                                                                <input type="email" class="validate"
+                                                                    value="{{ $params[0]->ancienne_ecole }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="file-field input-field col s12">
-                                                                <div class="btn admin-upload-btn">
-                                                                    <span>File</span>
-                                                                    <input type="file">
-                                                                </div>
-                                                                <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" type="text"
-                                                                        placeholder="Profile image">
-                                                                </div>
+                                                            <label class="">Etudes</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="email" class="validate"
+                                                                    value="{{ $params[0]->etudes }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -404,67 +425,59 @@
                                                 <div class="tab-inn">
                                                     <form>
                                                         <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate" required>
-                                                                <label class="">First name</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate" required>
-                                                                <label class="">Last name</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="number" value="" class="validate" required>
-                                                                <label class="">CIN</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="text" class="validate" value="" required>
-                                                                <label class="">Profession</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate">
-                                                                <label class="">Adresse</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="text" value="" class="validate">
-                                                                <label class="">Ville</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input type="tel" value="" class="validate">
-                                                                <label class="">Téléphone</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input type="tel" value="" class="validate">
-                                                                <label class="">Téléphone Domicile</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
+                                                            <label class="">Nom Père</label>
                                                             <div class="input-field col s12">
-                                                                <input type="email" value="" class="validate">
-                                                                <label>Email</label>
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[1]->nom_parent }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
+                                                            <label class="">Téléphone</label>
                                                             <div class="input-field col s12">
-                                                                <input type="text" value="" class="validate">
-                                                                <label>Type De Relation</label>
+                                                                <input type="integer" class="validate"
+                                                                    value="{{ $params[1]->tel_parent }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="file-field input-field col s12">
-                                                                <div class="btn admin-upload-btn">
-                                                                    <span>File</span>
-                                                                    <input type="file">
-                                                                </div>
-                                                                <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" type="text"
-                                                                        placeholder="Profile image">
-                                                                </div>
+                                                            <label class="">Profession</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[1]->prof_parent }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Email Père</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="email" class="validate"
+                                                                    value="{{ $params[1]->email_parent }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Nom Mère</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[2]->nom_parent }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Téléphone Mère</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="integer" class="validate"
+                                                                    value="{{ $params[2]->tel_parent }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Profession</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="text" class="validate"
+                                                                    value="{{ $params[2]->prof_parent }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="">Email Mère</label>
+                                                            <div class="input-field col s12">
+                                                                <input type="email" class="validate"
+                                                                    value="{{ $params[2]->email_parent }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">

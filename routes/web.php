@@ -47,3 +47,7 @@ Route::get('/admin-createStudent', function () {
 });
 
 Route::resource('eleve','App\Http\Controllers\EleveController');
+
+Route::resource('parents','App\Http\Controllers\ParentController');
+
+Route::resource('teacher','App\Http\Controllers\TeacherController');

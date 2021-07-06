@@ -98,7 +98,7 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="/admin-students">Afficher Elèves</a>
+                                    <li><a href="/eleve">Afficher Elèves</a>
                                     </li>
                                     <li><a href="/admin-createStudent">Ajouter nouveau Elève</a>
                                     </li>
@@ -164,7 +164,6 @@
                     </ul>
                 </div>
             </div>
-
             <!--== BODY INNER CONTAINER ==-->
 
 

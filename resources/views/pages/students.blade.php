@@ -200,6 +200,7 @@
                                                     <th>Niveau</th>
                                                     <th>email</th>
                                                     <th>Détails</th>
+                                                    <th>Supprimer</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -217,6 +218,15 @@
                                                             <td>{{ $eleve->email }}</td>
                                                             <td><a href="/eleve/{{ $eleve->id_eleve }}"
                                                                     class="ad-st-view">View</a>
+                                                            </td>
+                                                            <td><form method="POST" action="/eleve/{{$eleve->id_eleve}}">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('DELETE') }}
+                                                        
+                                                                <div class="form-group">
+                                                                    <input type="submit" class="btn btn-danger delete-user ad-st-view2" value="Supprimer">
+                                                                </div>
+                                                            </form></button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -247,6 +257,15 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script src="/js/custom.js"></script>
+    <script>
+        $('.delete-user').click(function(e){
+            e.preventDefault() // Don't post the form, unless confirmed
+            if (confirm('Are you sure?')) {
+                // Post the form
+                $(e.target).closest('form').submit() // Post the surrounding form
+            }
+        });
+    </script>
 </body>
 
 

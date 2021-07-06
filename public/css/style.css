@@ -6203,12 +6203,22 @@ textarea {
 }
 
 .ad-st-view {
-    background: #e25e30;
+    background: #005c9794;
     color: #fff !important;
     font-size: 12px;
     font-weight: 700;
     padding: 1px 5px;
     border-radius: 3px;
+}
+
+.ad-st-view2 {
+    background: red;
+    color: white !important;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    border-color: red;
 }
 
 .admin-form {}

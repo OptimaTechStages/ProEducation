@@ -22,7 +22,7 @@ class CreateElevesTable extends Migration
             $table->string('adresse');
             $table->date('date_naissance');
             $table->string('lieu_naissance');
-            $table->string('Nationalité');
+            $table->string('Nationalite');
             $table->string('email');
             $table->integer('phone1');
             $table->integer('phone2');
@@ -30,10 +30,12 @@ class CreateElevesTable extends Migration
             $table->string('etudes');
             $table->string('parcours_scolaire');
             $table->string('filiere');
-            $table->string('specialité');
+            $table->string('specialite');
             $table->integer('niveau');
             $table->integer('classe');
             $table->integer('sous_groupe');
+            $table->integer('id_pere');
+            $table->integer('id_mere');
             $table->string('mdp');
         });
     }

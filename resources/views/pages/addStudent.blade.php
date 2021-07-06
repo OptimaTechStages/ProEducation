@@ -98,7 +98,7 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="/admin-students">Afficher Elèves</a>
+                                    <li><a href="/eleve">Afficher Elèves</a>
                                     </li>
                                     <li><a href="/admin-createStudent">Ajouter nouveau Elève</a>
                                     </li>
@@ -191,7 +191,8 @@
                                         <h4>Ajouter Nouveau Elève</h4>
                                     </div>
                                     <div class="tab-inn">
-                                        <form>
+                                        <form action="/eleve" method="post">
+                                            @csrf
                                             <div class="row">
 
                                                 <div class="ml-2 col-sm-12" id="avatar">
@@ -199,12 +200,9 @@
                                                         id="preview" class="img-thumbnail">
                                                 </div>
                                                 <div class="ml-2 col-sm-12">
-                                                    <div id="msg"></div>
-                                                    <form method="post" id="image-form">
-
                                                         <div class="input-group my-3">
                                                             <div class="input-group-append">
-                                                                <input type="file" name="img[]" class="file"
+                                                                <input type="file" name="img" class="file"
                                                                     accept="image/*">
                                                                 <div class="input-group my-3" style="display: flex;">
                                                                     <div class="input-group-append">
@@ -214,170 +212,167 @@
                                                                             Jour</button>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-                                                    </form>
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="text" value="" class="validate" required>
+                                                        <input type="text" name="nom" class="validate" required>
                                                         <label class="">Nom</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="text" value="" class="validate" required>
+                                                        <input type="text" name="prenom" class="validate" required>
                                                         <label class="">Prénom</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="number" value="" class="validate" required>
+                                                        <input type="text" name="sexe" class="validate" required>
+                                                        <label class="">Sexe</label>
+                                                    </div>
+                                                    <div class="input-field col s6">
+                                                        <input type="text" name="adresse" class="validate" required>
                                                         <label class="">Adresse</label>
                                                     </div>
+                                                </div>
+                                                <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="email" class="validate" value="" required>
+                                                        <input type="date" name="date_naissance" class="validate" required>
                                                         <label class="">Date de Naissance</label>
                                                     </div>
-                                                </div>
-                                                <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="text" value="" class="validate">
-                                                        <label class="">City</label>
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="text" value="" class="validate">
-                                                        <label class="">Country</label>
+                                                        <input type="text" name="lieu_naissance" class="validate" required>
+                                                        <label class="">Lieu de Naissance</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="text" name="nationalite" class="validate" required>
+                                                        <label class="">Nationalité</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="email" name="email" class="validate" required>
+                                                        <label class="">Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col s4">
+                                                        <label class="">Générez un Mot de Passe Elève:</label>
+                                                    </div>
+                                                    <div class="input-field col s8">
+                                                        <input type="password" name="mdp" class="validate" required>
+                                                        <label class="">Entrez MDP</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="tel" name="phone1" class="validate" required>
+                                                        <label class="">Numéro de Téléphone:</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="tel" name="phone2" class="validate" required>
+                                                        <label class="">Numéro de Téléphone2 (Optionnel)</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="text" name="ancienne_ecole" class="validate" required>
+                                                        <label class="">Ancienne Ecole</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="text" name="etudes" class="validate" required>
+                                                        <label class="">Etudes</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="text" name="filiere" class="validate" required>
+                                                        <label class="">Filière</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="text" name="specialite" class="validate" required>
+                                                        <label class="">Spécialité</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="number" name="niveau" class="validate" required>
+                                                        <label class="">Niveau d'études</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="number" name="classe" class="validate" required>
+                                                        <label class="">Classe</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="number" name="sous_groupe" class="validate" required>
+                                                        <label class="">Sous Groupe</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="text" name="parcours_scolaire" class="validate" required>
+                                                        <label class="">Parcours Scolaire</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="text" name="nom_pere" class="validate" required>
+                                                        <label class="">Nom Du Père</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="text" name="prof_pere" class="validate" required>
+                                                        <label class="">Profession père</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="tel" name="tel_pere" class="validate" required>
+                                                        <label class="">Numéro de téléphone du père</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="email" name="email_pere" class="validate" required>
+                                                        <label class="">Email Pere</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col s4">
+                                                        <label class="">Générez un Mot de Passe du Compte Père:</label>
+                                                    </div>
+                                                    <div class="input-field col s8">
+                                                        <input type="password" name="mdp_pere" class="validate" required>
+                                                        <label class="">Entrez MDP</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="text" name="nom_mere" class="validate" required>
+                                                        <label class="">Nom Mère</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="text" name="prof_mere" class="validate" required>
+                                                        <label class="">Profession Mère</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                        <input type="tel" name="tel_mere" class="validate" required>
+                                                        <label class="">Numéro de téléphone du Mère</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
+                                                        <input type="email" name="email_mere" class="validate" required>
+                                                        <label class="">Email Mère</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Password</label>
+                                                    <div class="input-field col s4">
+                                                        <label class="">Générez un Mot de Passe Pour compte Mère:</label>
                                                     </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="password" value="" class="validate">
-                                                        <label class="">Confirm Password</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="input-field col s12">
-                                                        <input type="text" value="" class="validate">
-                                                        <label>Student id</label>
+                                                    <div class="input-field col s8">
+                                                        <input type="password" name="mdp_mere" class="validate" required>
+                                                        <label class="">Entrez MDP</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="file-field input-field col s12">
-                                                        <div class="btn admin-upload-btn">
-                                                            <span>File</span>
-                                                            <input type="file">
-                                                        </div>
-                                                        <div class="file-path-wrapper">
-                                                            <input class="file-path validate" type="text"
-                                                                placeholder="Profile image">
-                                                        </div>
-                                                    </div>
-                                                </div>
+
                                                 <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="waves-effect waves-light btn-large waves-input-wrapper"
