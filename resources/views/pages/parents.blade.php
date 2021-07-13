@@ -118,7 +118,7 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="/teacher">Afficher Enseignants</a>
+                                    <li><a href="/admin-teachers">Afficher Enseignants</a>
                                     </li>
                                     <li><a href="/admin-createTeacher">Ajouter nouveau Enseignant</a>
                                     </li>
@@ -168,13 +168,13 @@
             </div>
             <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">
-                <h4>Liste des Elèves Inscrits</h4>
+                <h4>Liste des Parents des élèves Inscrits</h4>
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
                         <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Users(Students)</a>
+                        <li class="active-bre"><a href="#"> Parents</a>
                         </li>
                         <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i>
                                 Retour</a>
@@ -188,7 +188,7 @@
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Liste des Elèves Inscrits</h4>
+                                    <h4>Liste des Parents Inscrits</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <div class="table-responsive table-desi">
@@ -196,47 +196,50 @@
                                             <thead>
                                                 <tr>
                                                     <th>Identifiant</th>
-                                                    <th>Image</th>
                                                     <th>Nom/Prénom</th>
-                                                    <th>classe</th>
-                                                    <th>Niveau</th>
-                                                    <th>email</th>
+                                                    <th>Role</th>
+                                                    <th>Tel</th>
+                                                    <th>Email</th>
+                                                    <th>Profession</th>
                                                     <th>Détails</th>
                                                     <th>Supprimer</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if (count($eleves) >= 1)
-                                                    @foreach ($eleves as $eleve)
+                                                @if (count($parents) >= 1)
+                                                    @foreach ($parents as $parent)
                                                         <tr>
-                                                            <td>{{ $eleve->id_eleve }}</td>
-                                                            <td><span class="list-img"><img src={{ $eleve->img }}
-                                                                        alt=""></span>
+                                                            <td>{{ $parent->id_parent }}</td>
+                                                            <td>{{ $parent->nom_parent }}</a>
                                                             </td>
-                                                            <td>{{ $eleve->prenom . ' ' . $eleve->nom }}</a>
-                                                            </td>
-                                                            <td>{{ $eleve->classe }}</td>
-                                                            <td>{{ $eleve->niveau }}</td>
-                                                            <td>{{ $eleve->email }}</td>
-                                                            <td><a href="/eleve/{{ $eleve->id_eleve }}"
-                                                                    class="ad-st-view">View</a>
-                                                            </td>
-                                                            <td>
-                                                                <form method="POST" action="/eleve/{{$eleve->id_eleve}}">
+                                                            <td>{{ $parent->role }}</td>
+                                                            <td>{{ $parent->tel_parent }}</td>
+                                                            <td>{{ $parent->email_parent }}</td>
+                                                            <td>{{ $parent->prof_parent }}</td>
+                                                            <td> <form method="get" action="/parents/update/{{ $parent->id_parent }}">
                                                                 {{ csrf_field() }}
-                                                                {{ method_field('DELETE') }}
+                                                                {{ method_field('PUT') }}
                                                         
                                                                 <div class="form-group">
-                                                                    <input type="submit" class="delete-user ad-st-view2" value="Supprimer">
+                                                                    <input type="submit" class="ad-st-view" value="Modifier">
                                                                 </div>
-                                                            </form>
+                                                            </form> 
+                                                            <td>
+                                                                <form method="POST" action="/parents/{{$parent->id_parent}}">
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('DELETE') }}
+                                                            
+                                                                    <div class="form-group">
+                                                                        <input type="submit" class=" delete-user ad-st-view2" value="Supprimer">
+                                                                    </div>
+                                                                </form> 
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 @else
                                                     <td>
                                                         <center>
-                                                            <h1>Pas d'élèves enregistrés !</h1>
+                                                            <h1>Pas de parents enregistrés !</h1>
                                                         </center>
 
                                                     </td>
@@ -251,7 +254,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -261,7 +263,7 @@
     <script src="/js/materialize.min.js"></script>
     <script src="/js/custom.js"></script>
     <script>
-        $('.delete-user').click(function(e){
+        $('.delete-user').click(function(e) {
             e.preventDefault() // Don't post the form, unless confirmed
             if (confirm('Are you sure?')) {
                 // Post the form

@@ -119,9 +119,76 @@ class EleveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatePerso(Request $request, $id)
     {
-        //
+        $eleve=Eleve::find($id);
+        $eleve->img =  $request->get('img');
+        $eleve->prenom =  $request->get('prenom');
+        $eleve->nom =  $request->get('nom');
+        $eleve->sexe =  $request->get('sexe');
+        $eleve->date_naissance =  $request->get('date_naissance');
+        $eleve->lieu_naissance =  $request->get('lieu_naissance');
+        $eleve->nationalite =  $request->get('nationalite');
+
+        $eleve->save();
+        return redirect()->back();
+    }
+
+      /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateContact(Request $request, $id)
+    {
+        $eleve=Eleve::find($id);
+        $eleve->email =  $request->get('email');
+        $eleve->phone1 =  $request->get('phone1');
+        $eleve->phone2 =  $request->get('phone2');
+
+       // echo $request->get('email');
+        $eleve->save();
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFormation(Request $request, $id)
+    {
+        $eleve=Eleve::find($id);
+        $eleve->parcours_scolaire =  $request->get('parcours_scolaire');
+        $eleve->filiere =  $request->get('filiere');
+        $eleve->specialite =  $request->get('specialite');
+        $eleve->niveau =  $request->get('niveau');
+        $eleve->classe =  $request->get('classe');
+        $eleve->sous_groupe =  $request->get('sous_groupe');
+
+        $eleve->save();
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAncEcole(Request $request, $id)
+    {
+        $eleve=Eleve::find($id);
+        $eleve->ancienne_ecole =  $request->get('ancienne_ecole');
+        $eleve->etudes =  $request->get('etudes');
+
+        $eleve->save();
+        return redirect()->back();
     }
 
     /**
@@ -132,25 +199,15 @@ class EleveController extends Controller
      */
     public function destroy($id)
     {
-
         $eleve= Eleve::find($id);
+        $id_pere= $eleve->id_pere;
+        $id_mere= $eleve->id_mere;
+        $pere= Parents::find($id_pere);
+        $mere= Parents::find($id_mere);
         $eleve->delete();
+        $pere->delete();
+        $mere->delete();
         return redirect('/eleve');
     }
-
-  /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function editPerso($id)
-    {
-        //
-    }
-
-
-
-
 }
 

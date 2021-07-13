@@ -169,12 +169,12 @@
             <!--== BODY INNER CONTAINER ==-->
 
             <div class="sb2-2">
-                <h1>Ajouter nouveau enseignant</h1>
+                <h1>Ajouter Un Nouveau Parent</h1>
                 <div class="sb2-2-2">
                     <ul>
                         <li><a href="/admin-dashboard"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="/admin-createStudent"> Add teacher</a>
+                        <li class="active-bre"><a href="/admin-addParent"> AddParent</a>
                         </li>
                         <li class="page-back"><a href="#"><i class="fa fa-backward" aria-hidden="true"></i>
                                 Retour</a>
@@ -188,109 +188,53 @@
                             <div class="col-md-12">
                                 <div class="box-inn-sp admin-form">
                                     <div class="inn-title">
-                                        <h4>Ajouter Nouveau Enseignant</h4>
+                                        <h4>Ajouter Nouveau Parent</h4>
                                     </div>
                                     <div class="tab-inn">
-                                        <form action="/teacher" method="post">
-                                            @csrf
+                                        <form action="/addParent/{{$eleve->id_eleve}}" method="put">
+                                            
                                             <div class="row">
-
-                                                <div class="ml-2 col-sm-12" id="avatar">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSItZEIqi-mJMnPpWOBUzEGvkE3gsACe19W2Np1neYZyI0PlTv6_WNzFByxz0EkV7equPQ&usqp=CAU"
-                                                        id="preview" class="img-thumbnail">
-                                                </div>
-                                                <div class="ml-2 col-sm-12">
-                                                        <div class="input-group my-3">
-                                                            <div class="input-group-append">
-                                                                <input type="file" name="img" class="file"
-                                                                    accept="image/*">
-                                                                <div class="input-group my-3" style="display: flex;">
-                                                                    <div class="input-group-append">
-                                                                        <button type="button"
-                                                                            class="browse btn btn-primary"><i
-                                                                                class="fa fa-fw fa-upload"></i>Mettre à
-                                                                            Jour</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
                                                         <input type="text" name="nom" class="validate" required>
-                                                        <label class="">Nom</label>
+                                                        <label class="">Nom Parent</label>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="text" name="prenom" class="validate" required>
-                                                        <label class="">Prénom</label>
+                                                        <input type="number" name="tel" class="validate" required>
+                                                        <label class="">Num téléphone</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col s6">
-                                                        <input type="date" name="date_naissance" class="validate" required>
-                                                        <label class="">date naissance</label>
+                                                        <select class="form-select" name="role" aria-label="Default select example">
+                                                            <option selected>Vous êtes sont: </option>
+                                                            <option value="1">Père</option>
+                                                            <option value="2">Mère</option>
+                                                        </select>
                                                     </div>
                                                     <div class="input-field col s6">
-                                                        <input type="text" name="lieu_naissance" class="validate" required>
-                                                        <label class="">lieu naissance</label>
+                                                        <input type="text" name="prof" class="validate" required>
+                                                        <label class="">Profession</label>
                                                     </div>
                                                 </div>
+
                                                 <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="text" name="sexe" class="validate" required>
-                                                        <label class="">sexe</label>
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="email" name="email" class="validate" required>
-                                                        <label class="">email</label>
+                                                    <div class="input-field col s12">
+                                                        <input type="email" class="validate" name="email" required>
+                                                        <label class="">Email Parent </label>
                                                     </div>
                                                 </div>
+
                                                 <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="text" name="nationalite" class="validate" required>
-                                                        <label class="">Nationalité</label>
+                                                    <div class="input-field col s4">
+                                                        <label class="">Définissez un mot de passe par défauts</label>
                                                     </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="number" name="cnss" class="validate" required>
-                                                        <label class="">CNSS</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="number" name="cin" class="validate" required>
-                                                        <label class="">CIN</label>
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="number" name="cimr" class="validate" required>
-                                                        <label class="">CIMR</label>
+                                                    <div class="input-field col s8">
+                                                        <input type="password" name="password" class="validate">
+                                                        <label class="">Mot de Passe</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="float" name="salaire_brut" class="validate" required>
-                                                        <label class="">salaire Brut</label>
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="float" name="salaire_net" class="validate" required>
-                                                        <label class="">salaire_net</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="text" name="situation_familiale" class="validate" required>
-                                                        <label class="">situation_familiale</label>
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <input type="number" name="nombre_enfants" class="validate" required>
-                                                        <label class="">nombre_enfants</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="input-field col s6">
-                                                        <input type="text" name="niveau" class="validate" required>
-                                                        <label class="">mutuelle</label>
-                                                    </div>
-                                                </div>
+
                                                 <div class="row">
                                                     <div class="input-field col s12">
                                                         <i class="waves-effect waves-light btn-large waves-input-wrapper"

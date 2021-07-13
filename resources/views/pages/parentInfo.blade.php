@@ -118,7 +118,7 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="/admin-teachers">Afficher Enseignants</a>
+                                    <li><a href="/teacher">Afficher Enseignants</a>
                                     </li>
                                     <li><a href="/admin-createTeacher">Ajouter nouveau Enseignant</a>
                                     </li>
@@ -289,21 +289,24 @@
                                                         <div class="row">
                                                             <label class="">Email</label>
                                                             <div class="input-field col s12">
-                                                                <input type="email" class="validate" name="email"
+                                                                <input type="email" class="validate"
+                                                                name="email"
                                                                     value="{{ $params[0]->email }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Téléphone1</label>
                                                             <div class="input-field col s12">
-                                                                <input type="tel" class="validate" name="phone1"
+                                                                <input type="tel" class="validate"
+                                                                name="phone1"
                                                                     value="{{ $params[0]->phone1 }}" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="">Téléphone2 (Option)</label>
                                                             <div class="input-field col s12">
-                                                                <input type="tel" class="validate" name="phone2"
+                                                                <input type="tel" class="validate"
+                                                                name="phone2"
                                                                     value="{{ $params[0]->phone2 }}" required>
                                                             </div>
                                                         </div>
@@ -331,7 +334,7 @@
                                                             <label class="">Parcours Scolaire</label>
                                                             <div class="input-field col s12">
                                                                 <input type="text" class="validate"
-                                                                    name="parcours_scolaire"
+                                                                name="parcours_scolaire"
                                                                     value="{{ $params[0]->parcours_scolaire }}"
                                                                     required>
                                                             </div>
@@ -339,7 +342,8 @@
                                                         <div class="row">
                                                             <label class="">Filière</label>
                                                             <div class="input-field col s12">
-                                                                <input type="text" class="validate" name="filiere"
+                                                                <input type="text" class="validate"
+                                                                name="filiere"
                                                                     value="{{ $params[0]->filiere }}" required>
                                                             </div>
                                                         </div>
@@ -367,8 +371,7 @@
                                                         <div class="row">
                                                             <label class="">Sous Groupe</label>
                                                             <div class="input-field col s12">
-                                                                <input type="integer" class="validate"
-                                                                    name="sous_groupe"
+                                                                <input type="integer" class="validate" name="sous_groupe"
                                                                     value="{{ $params[0]->sous_groupe }}" required>
                                                             </div>
                                                         </div>
@@ -394,8 +397,7 @@
                                                         <div class="row">
                                                             <label class="">Nom Ecole</label>
                                                             <div class="input-field col s12">
-                                                                <input type="text" class="validate"
-                                                                    name="ancienne_ecole"
+                                                                <input type="text" class="validate" name="ancienne_ecole"
                                                                     value="{{ $params[0]->ancienne_ecole }}"
                                                                     required>
                                                             </div>
@@ -450,17 +452,7 @@
                                                                     <td>
                                                                         <center>
                                                                             <h1>Pas de parents enregistrés !</h1>
-                                                                            <br>
-                                                                            <center>
-                                                                                <a class="ad-st-view"
-                                                                                    href="/admin-addParent/{{ $params[0]->id_eleve }}">
-                                                                                    Add Parent</a>
-                                                                            </center>
                                                                         </center>
-
-                                                                    </td>
-                                                                    <td>
-
                                                                     </td>
                                                                 @else
                                                                     @if ($params[1] !== null && $params[2] !== null)
@@ -472,9 +464,18 @@
                                                                             <td>{{ $params[1]->tel_parent }}</td>
                                                                             <td>{{ $params[1]->email_parent }}</td>
                                                                             <td>{{ $params[1]->prof_parent }}</td>
-                                                                            <td><a href="/parents/update/{{ $params[1]->id_parent }}"
-                                                                                    class="ad-st-view">View</a>
-                                                                            </td>
+                                                                            <td>
+                                                                                <form method="POST"
+                                                                                    action="/parents/parentUpdate">
+                                                                                    {{ csrf_field() }}
+                                                                                    {{ method_field('PUT') }}
+
+                                                                                    <div class="form-group">
+                                                                                        <input type="submit"
+                                                                                            class="ad-st-view"
+                                                                                            value="Modifier">
+                                                                                    </div>
+                                                                                </form>
                                                                             <td>
                                                                                 <form method="POST"
                                                                                     action="/parents/{{ $params[1]->id_parent }}">
@@ -497,9 +498,18 @@
                                                                             <td>{{ $params[2]->tel_parent }}</td>
                                                                             <td>{{ $params[2]->email_parent }}</td>
                                                                             <td>{{ $params[2]->prof_parent }}</td>
-                                                                            <td><a href="/parents/update/{{ $params[2]->id_parent }}"
-                                                                                    class="ad-st-view">View</a>
-                                                                            </td>
+                                                                            <td>
+                                                                                <form method="POST"
+                                                                                    action="/parents/parentUpdate">
+                                                                                    {{ csrf_field() }}
+                                                                                    {{ method_field('PUT') }}
+
+                                                                                    <div class="form-group">
+                                                                                        <input type="submit"
+                                                                                            class="ad-st-view"
+                                                                                            value="Modifier">
+                                                                                    </div>
+                                                                                </form>
                                                                             <td>
                                                                                 <form method="POST"
                                                                                     action="/parents/{{ $params[2]->id_parent }}">
@@ -526,9 +536,18 @@
                                                                                 </td>
                                                                                 <td>{{ $params[2]->prof_parent }}
                                                                                 </td>
-                                                                                <td><a href="/parents/update/{{ $params[2]->id_parent }}"
-                                                                                        class="ad-st-view">View</a>
-                                                                                </td>
+                                                                                <td>
+                                                                                    <form method="POST"
+                                                                                        action="/parents/parentUpdate">
+                                                                                        {{ csrf_field() }}
+                                                                                        {{ method_field('PUT') }}
+
+                                                                                        <div class="form-group">
+                                                                                            <input type="submit"
+                                                                                                class="ad-st-view"
+                                                                                                value="Modifier">
+                                                                                        </div>
+                                                                                    </form>
                                                                                 <td>
                                                                                     <form method="POST"
                                                                                         action="/parents/{{ $params[2]->id_parent }}">
@@ -554,12 +573,21 @@
                                                                                 </td>
                                                                                 <td>{{ $params[1]->prof_parent }}
                                                                                 </td>
-                                                                                <td><a href="/parents/update/{{ $params[1]->id_parent }}"
-                                                                                        class="ad-st-view">View</a>
-                                                                                </td>
                                                                                 <td>
                                                                                     <form method="POST"
-                                                                                        action="/parents/{{ $params[1]->id_eleve }}">
+                                                                                        action="/parents/parentUpdate">
+                                                                                        {{ csrf_field() }}
+                                                                                        {{ method_field('PUT') }}
+
+                                                                                        <div class="form-group">
+                                                                                            <input type="submit"
+                                                                                                class="ad-st-view"
+                                                                                                value="Modifier">
+                                                                                        </div>
+                                                                                    </form>
+                                                                                <td>
+                                                                                    <form method="POST"
+                                                                                        action="/parents/{{ $params[1]->id_parent }}">
                                                                                         {{ csrf_field() }}
                                                                                         {{ method_field('DELETE') }}
 

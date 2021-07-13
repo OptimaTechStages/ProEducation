@@ -102,6 +102,8 @@
                                     </li>
                                     <li><a href="/admin-createStudent">Ajouter nouveau Elève</a>
                                     </li>
+                                    <li><a href="/parents">Afficher Liste des parents</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -116,7 +118,7 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="/admin-teachers">Afficher Enseignants</a>
+                                    <li><a href="/teacher">Afficher Enseignants</a>
                                     </li>
                                     <li><a href="/admin-createTeacher">Ajouter nouveau Enseignant</a>
                                     </li>
@@ -164,19 +166,18 @@
                     </ul>
                 </div>
             </div>
-
             <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">
+                <h4>Liste des Elèves Inscrits</h4>
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
-                    <h4>Liste des Enseignants Inscrits</h4>
                     <ul>
                         <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
                         <li class="active-bre"><a href="#"> Users(Students)</a>
                         </li>
                         <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i>
-                                Back</a>
+                                Retour</a>
                         </li>
                     </ul>
                 </div>
@@ -187,42 +188,60 @@
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Liste des Enseignants Inscrits</h4>
+                                    <h4>Liste des Elèves Inscrits</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <div class="table-responsive table-desi">
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>User</th>
-                                                    <th>Name</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                    <th>Country</th>
-                                                    <th>Id</th>
-                                                    <th>Date of birth</th>
-                                                    <th>Status</th>
-                                                    <th>View</th>
+                                                    <th>Identifiant</th>
+                                                    <th>Image</th>
+                                                    <th>Nom/Prénom</th>
+                                                    <th>email_teacher</th>
+                                                    <th>salaire_brut</th>
+                                                    <th>salaire_net</th>
+                                                    <th>Détails</th>
+                                                    <th>Supprimer</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td><span class="list-img"><img src="images/user/1.png"
-                                                                alt=""></span>
-                                                    </td>
-                                                    <td><a href="#"><span class="list-enq-name">Marsha Hogan</span><span
-                                                                class="list-enq-city">Illunois, United States</span></a>
-                                                    </td>
-                                                    <td>+01 3214 6522</td>
-                                                    <td>chadengle@dummy.com</td>
-                                                    <td>united states</td>
-                                                    <td>ST17241</td>
-                                                    <td>03 Jun 1990</td>
+                                                @if (count($teachers) >= 1)
+                                                    @foreach ($teachers as $eleve)
+                                                        <tr>
+                                                            <td>{{ $eleve->id_teacher }}</td>
+                                                            <td><span class="list-img"><img src={{ $eleve->img }}
+                                                                        alt=""></span>
+                                                            </td>
+                                                            <td>{{ $eleve->prenom_teacher . ' ' . $eleve->nom_teacher }}</a>
+                                                            </td>
+                                                            <td>{{ $eleve->email_teacher }}</td>
+                                                            <td>{{ $eleve->salaire_brut }}</td>
+                                                            <td>{{ $eleve->salaire_net }}</td>
+                                                            <td><a href="/eleve/{{ $eleve->id_eleve }}"
+                                                                    class="ad-st-view">View</a>
+                                                            </td>
+                                                            <td>
+                                                                <form method="POST" action="/eleve/{{$eleve->id_eleve}}">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('DELETE') }}
+                                                        
+                                                                <div class="form-group">
+                                                                    <input type="submit" class="delete-user ad-st-view2" value="Supprimer">
+                                                                </div>
+                                                            </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
                                                     <td>
-                                                        <span class="label label-success">Active</span>
+                                                        <center>
+                                                            <h1>Pas d'élèves enregistrés !</h1>
+                                                        </center>
+
                                                     </td>
-                                                    <td><a href="/admin-teacherInfo" class="ad-st-view">View</a></td>
-                                                </tr>
+                                                @endif
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -241,6 +260,15 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script src="/js/custom.js"></script>
+    <script>
+        $('.delete-user').click(function(e){
+            e.preventDefault() // Don't post the form, unless confirmed
+            if (confirm('Are you sure?')) {
+                // Post the form
+                $(e.target).closest('form').submit() // Post the surrounding form
+            }
+        });
+    </script>
 </body>
 
 

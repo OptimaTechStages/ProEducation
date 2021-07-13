@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ParentController;
+use App\Http\Controllers\EleveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::resource('eleve','App\Http\Controllers\EleveController');
+
+Route::resource('parents','App\Http\Controllers\ParentController');
+
+Route::resource('teacher','App\Http\Controllers\TeacherController');
+
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Route::get('/admin-dashboard', function () {
     return view('pages/dashboard');
@@ -46,8 +54,20 @@ Route::get('/admin-createStudent', function () {
     return view('pages/addStudent');
 });
 
-Route::resource('eleve','App\Http\Controllers\EleveController');
+Route::get('/admin-addParent/{id}', function ($id) {
+    return view('pages/addParent');
+});
 
-Route::resource('parents','App\Http\Controllers\ParentController');
+Route::get('/redirectParent/{id}', [ParentController::class, 'redirectParent']);
 
-Route::resource('teacher','App\Http\Controllers\TeacherController');
+Route::get('/addParent/{id}', [ParentController::class, 'addParent']);
+
+Route::get('/updatePerso/{id}', [EleveController::class, 'updatePerso']);
+
+Route::get('/updateContact/{id}', [EleveController::class, 'updateContact']);
+
+Route::get('/updateFormation/{id}', [EleveController::class, 'updateFormation']);
+
+Route::get('/updateAncEcole/{id}', [EleveController::class, 'updateAncEcole']);
+
+Route::get('/parents/update/{id}', [ParentController::class, 'updateParent']);

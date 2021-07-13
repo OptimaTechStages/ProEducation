@@ -93,6 +93,8 @@
                                     </li>
                                     <li><a href="/admin-createStudent">Ajouter nouveau Elève</a>
                                     </li>
+                                    <li><a href="/parents">Afficher Liste des parents</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
